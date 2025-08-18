@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/ebbaca388e.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>TTG Spicy Resturant</title>
+</head>
+<body class="w-full mx-auto">
+  <nav class="w-full bg-[#ffc400] h-14 p-2 sticky z-[9999] top-0 flex items-center justify-between">
+    <div class="text-xl font-[cursive] font-bold">
+      Spicy-T-Restaurant
+    </div>
+
+    <div id="nav_items" class="md:flex flex-col hidden md:flex-row font-semibold text-sm fixed sm:static z-[90] top-14 left-0 w-full md:w-max text-black bg-[#ffc400] items-center gap-2">
+      <div class="cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="">Home</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="">Resturant</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="cart.html">Cart</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-1 px-4 bg-black shadow-lg text-white rounded-lg">
+        <a href="">Login</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-1 px-4 bg-white shadow-lg rounded-lg">
+        <a href="">Signup</a>
+      </div>
+    </div>
+
+    <button type="button" id="nav_btn" class="md:hidden">
+        <i class="fa-solid fa-bars text-2xl hover:text-white transition-all"></i>
+      </button>
+  </nav>
+
+  <main>
+    <section class="carousel relative overflow-hidden w-full mx-auto">
+      <div class="carousel-inner flex transition-transform duration-500 w-full]">
+        <div class="carousel-items w-full flex-shrink-0">
+          <img src="images/image1.jpg" alt="" class="w-full h-auto object-cover aspect-[32/9] max-md:aspect-[16/9]">
+        </div>
+        <div class="carousel-items w-full flex-shrink-0">
+          <img src="images/image2.jpg" alt="" class="w-full h-auto object-cover aspect-[32/9] max-md:aspect-[16/9]">
+        </div>
+        <div class="carousel-items w-full flex-shrink-0">
+          <img src="images/image3.jpg" alt="" class="w-full h-auto object-cover aspect-[32/9] max-md:aspect-[16/9]">
+        </div>
+      </div>
+
+      <button id="prev" class="absolute bg-[#ffc400] top-1/2 left-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25">
+          <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="next" class="absolute bg-[#ffc400] top-1/2 right-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </section>
+
+    <section class="w-full my-5 max-md:px-5">
+      <h2 class="pb-4 border-b-2 border-gray-300 text-xl w-full font-semibold">Exciting Offerings</h2>
+
+      <div id="exciting" class="slider-container relative w-full my-5 mx-auto">
+        <div class="slider flex gap-4 pb-4 overflow-x-hidden">
+
+          <button id="prevBtn" class="absolute bg-[#ffc400] top-1/2 left-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25 prevBtn">
+              <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button id="nextBtn" class="absolute bg-[#ffc400] top-1/2 right-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25 nextBtn">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="w-full my-5 max-md:px-5">
+      <h2 class="pb-4 border-b-2 border-gray-300 text-xl w-full font-semibold">European Delight</h2>
+
+      <div id="european" class="slider-container relative w-full my-5 mx-auto">
+        <div class="slider flex gap-4 pb-4 overflow-x-hidden">
+          
+          <button id="prevBtn" class="absolute bg-[#ffc400] top-1/2 left-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25 prevBtn">
+              <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button id="nextBtn" class="absolute bg-[#ffc400] top-1/2 right-4 p-2 rounded-full px-4 transform -translate-y-1/2 text-black disabled:opacity-25 nextBtn">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="w-full bg-[#ffc400] mt-18 px-10 py-5  text-center text-black">
+      <div class="text-xl text-white font-bold max-md:text-sm shadow-xl bg-gradient-to-r from-orange-500 to-blue-800 rounded-full px-4 py-2 w-max mx-auto mb-6">
+        Free Delivery with Premium Plan
+      </div>
+      <p class="mb-6 max-md:text-xs">
+        Enjoy free delivery on all orders with our premium plan. Sign up today to experience the best of our culinary offerings without any delivery charges.
+      </p>
+      <div class="text-5xl font-bold w-full my-6 text-center">
+        just <i class="fa-solid fa-naira-sign"></i> 2500/month
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="bg-gray-800 text-white ">
+    <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="text-[#ffc400] font-[cursive] text-4xl font-semibold">
+          Spicy-T-Restaurant
+        </div>
+
+        <ul class="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-facebook"></i></a></li>
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
+        <div>
+          <p class="text-gray-100 font-medium">Features</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Resturants</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Categories</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Locations</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Company</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Meet the team</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">About</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Helpful Links</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Contacts</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">FAQs</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Live Chats</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Legal</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Accessibility</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Return Policy</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Refund Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500">&copy; 2025 Spicy-T-Resturants. All Right Reserved.</p>
+    </div>
+
+  </footer>
+  
+  <script src="./script.js"></script>
+</body>
+</html>
