@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/ebbaca388e.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Cart-TTG Spicy Resturant</title>
+</head>
+<body class="w-full mx-auto cart-page">
+  <nav class="w-full bg-[#ffc400] h-14 p-2 sticky z-[9999] top-0 flex items-center justify-between">
+    <div class="text-xl font-[cursive] font-bold">
+      Spicy-T-Restaurant
+    </div>
+
+    <div id="nav_items" class="md:flex flex-col hidden md:flex-row font-semibold text-sm fixed sm:static z-[90] top-14 left-0 w-full md:w-max text-black bg-[#ffc400] items-center gap-2">
+      <div class="cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="">Resturant</a>
+      </div>
+      <div class="icon-cart cursor-pointer mx-auto w-max py-2 px-4">
+        <a href="cart.html">Cart</a>
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping relative"></i></a>
+        <span class="bg-red-600 text-white flex justify-center items-center rounded-[50%] w-[20px] h-[20px] absolute top-[6px] right-[175px]">0</span>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-1 px-4 bg-black shadow-lg text-white rounded-lg">
+        <a href="">Login</a>
+      </div>
+      <div class="cursor-pointer mx-auto w-max py-1 px-4 bg-white shadow-lg rounded-lg">
+        <a href="">Signup</a>
+      </div>
+    </div>
+
+    <button type="button" id="nav_btn" class="md:hidden">
+        <i class="fa-solid fa-bars text-2xl hover:text-white transition-all"></i>
+      </button>
+  </nav>
+
+  <main>
+    <section class="cartTab max-w-7xl rounded-md shadow-xl mx-auto my-14 grid grid-rows-[71px_1fr_71px]">
+      <h1 class="p-5 m-0 font-light text-red-700">Shopping Cart</h1>
+      <div class="listCart overflow-auto space-y-6">
+        <div class="item grid grid-cols-[1fr_150px_50px_170px] gap-2 items-center text-center">
+          <div class="w-60 ">
+            <img src="images/image1.jpg" alt="" class="w-full object-cover aspect-[4/3]">
+          </div>
+          <h2>Name </h2>
+          <p class="totalPrice "><i class="fa-solid fa-naira-sign"></i> 2500</p>
+          <div class="quantity">
+            <span class="w-6 h-6 bg-[#ffc400] text-white rounded-full cursor-pointer px-3 py-2 text-sm minus ">-</span>
+            <span class="w-6 h-6 bg-[#ffc400] text-white rounded-full cursor-pointer px-3 py-2 text-sm ">1</span>
+            <span class="w-6 h-6 bg-[#ffc400] text-white rounded-full cursor-pointer px-3 py-2 text-sm plus">+</span>
+          </div>
+        </div>
+      </div>
+      <div class="total-price">Total: <i class="fa-solid fa-naira-sign"></i>0</div>
+    </section>
+  </main>
+
+  <footer id="footer" class="bg-gray-800 text-white ">
+    <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="text-[#ffc400] font-[cursive] text-4xl font-semibold">
+          Spicy-T-Restaurant
+        </div>
+
+        <ul class="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-facebook"></i></a></li>
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="" class="text-gray-300 hover:opacity-75 transition"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul> 
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
+        <div>
+          <p class="text-gray-100 font-medium">Features</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Resturants</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Categories</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Locations</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Company</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Meet the team</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">About</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Helpful Links</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Contacts</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">FAQs</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Live Chats</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-100 font-medium">Legal</p>
+          <ul class="mt-6 space-y-4 text-sm">
+            <li>
+              <a href="" class="text-gray-300">Accessibility</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Return Policy</a>
+            </li>
+            <li>
+              <a href="" class="text-gray-300">Refund Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500">&copy; 2025 Spicy-T-Resturants. All Right Reserved.</p>
+    </div>
+
+  </footer>
+  
+  <script src="./script.js"></script>
+  <!--<script src="./script1.js"></script>-->
+</body>
+</html>
