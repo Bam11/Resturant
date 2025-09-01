@@ -85,12 +85,16 @@ const addToCart = (productId) => {
       productId: productId,
       quantity: 1
     });
-  } else{
+    } else{
       carts[positionThisProductInCart].quantity = carts[positionThisProductInCart].quantity + 1; 
     }
 
     localStorage.setItem('carts', JSON.stringify(carts));
     addCartToHTML();
+
+    //showCartModal();
+    showToast();
+
 }
 
 const addCartToHTML = () => {
@@ -214,97 +218,141 @@ if (document.body.classList.contains("index-page")) {
   let scrollLeft;
   
   sliders.forEach(slider => {
-  const prevBtn = slider.querySelector('.prevBtn');
-  const nextBtn = slider.querySelector('.nextBtn');
-  slider.addEventListener('scroll', () => checkSliderButtons(slider.parentElement));
+    const prevBtn = slider.querySelector('.prevBtn');
+    const nextBtn = slider.querySelector('.nextBtn');
+    slider.addEventListener('scroll', () => checkSliderButtons(slider.parentElement));
 
-  slider.addEventListener('click', (event) => {
-    let clickedElement = event.target;
-    const addCartBtn = clickedElement.closest('.addCart');
+    slider.addEventListener('click', (event) => {
+      let clickedElement = event.target;
+      const addCartBtn = clickedElement.closest('.addCart');
 
-    if (addCartBtn) {
-      // Find the closest parent with the data-id attribute
-      const card = addCartBtn.closest('.card');
-      if (card) {
-        const productId = card.dataset.id;
-        console.log(`Product ID to add to cart: ${productId}`);
-        
-        addToCart(productId);
+      if (addCartBtn) {
+        // Find the closest parent with the data-id attribute
+        const card = addCartBtn.closest('.card');
+        if (card) {
+          const productId = card.dataset.id;
+          console.log(`Product ID to add to cart: ${productId}`);
+          
+          addToCart(productId);
+        }
       }
-    }
-  });
-
-
+    });
   
+    slider.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    })  ;
 
-  
-  slider.addEventListener('mousedown', e => {
-    isDragging = true;
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  })  ;
-
-  slider.addEventListener('mouseleave', e => {
-    isDragging = false;
+    slider.addEventListener('mouseleave', e => {
+      isDragging = false;
+      
+    });
     
-  });
-  
-  slider.addEventListener('mouseup', e => {
-    isDragging = false;
+    slider.addEventListener('mouseup', e => {
+      isDragging = false;
+    });
+
+    slider.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = x - startX;  
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({left: -300, behavior: 'smooth'});
+      setTimeout(() => {
+        checkSliderButtons(slider.parentElement);
+      }, 300);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({left: 300, behavior: 'smooth'});
+      setTimeout(() => {
+        checkSliderButtons(slider.parentElement);
+      }, 300);
+    });
+
+    checkSliderButtons(slider.parentElement);
+
+
   });
 
-  slider.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = x - startX;  
-    slider.scrollLeft = scrollLeft - walk;
+  const exciting = document.querySelector('#exciting').querySelector('.slider');
+  const european = document.querySelector('#european').querySelector('.slider');
+
+  let allProducts = [];
+
+  //api integration
+  fetch('https://dummyjson.com/recipes/').then(res => res.json()).then(data => {
+    console.log(data);
+    listProduct = data.recipes;
+    allProducts = [...allProducts, ...data.recipes];
+    localStorage.setItem('products', JSON.stringify(allProducts));
+    exciting.innerHTML += listProduct.map(cardComponent).join('');
+
+    initializeSliderButtons(exciting.parentElement);
   });
 
-  prevBtn.addEventListener('click', () => {
-    slider.scrollBy({left: -300, behavior: 'smooth'});
+  fetch('https://dummyjson.com/recipes/tag/Italian').then(res => res.json()).then(data => {
+    console.log(data);
+    listProduct = data.recipes;
+    allProducts = [...allProducts, ...data.recipes];
+    localStorage.setItem('products', JSON.stringify(allProducts));
+    european.innerHTML += data.recipes.map(cardComponent).join('');
+
+    initializeSliderButtons(european.parentElement);
+  });
+
+    /*
+    // Modal Elements
+  const modal = document.getElementById('cartModal');
+  const closeModal = document.getElementById('closeModal');
+
+  // Function to show modal
+  function showCartModal() {
+    modal.classList.remove('hidden');
+
+    // Auto close after 2.5s
     setTimeout(() => {
-      checkSliderButtons(slider.parentElement);
-    }, 300);
-  });
+      modal.classList.add('hidden');
+    }, 2500);
+  }
 
-  nextBtn.addEventListener('click', () => {
-    slider.scrollBy({left: 300, behavior: 'smooth'});
+  // Close modal manually
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  }); */
+
+    const toast = document.getElementById("cartToast");
+
+  function showToast() {
+    if (!toast) return;
+
+    toast.classList.remove("hidden");
+    
+    // slide in after a tiny delay so transition applies
     setTimeout(() => {
-      checkSliderButtons(slider.parentElement);
-    }, 300);
-  });
+      toast.classList.remove("translate-x-full");
+      toast.classList.add("translate-x-0");
+    }, 50);
 
-  checkSliderButtons(slider.parentElement);
+    // auto-hide after 3s
+    setTimeout(() => hideToast(), 3000);
+  }
 
+  function hideToast() {
+    if (!toast) return;
 
-});
+      toast.classList.add("translate-x-full");
 
-const exciting = document.querySelector('#exciting').querySelector('.slider');
-const european = document.querySelector('#european').querySelector('.slider');
-
-let allProducts = [];
-
-//api integration
-fetch('https://dummyjson.com/recipes/').then(res => res.json()).then(data => {
-  console.log(data);
-  listProduct = data.recipes;
-  allProducts = [...allProducts, ...data.recipes];
-  localStorage.setItem('products', JSON.stringify(allProducts));
-  exciting.innerHTML += listProduct.map(cardComponent).join('');
-
-  initializeSliderButtons(exciting.parentElement);
-});
-
-fetch('https://dummyjson.com/recipes/tag/Italian').then(res => res.json()).then(data => {
-  console.log(data);
-  listProduct = data.recipes;
-  allProducts = [...allProducts, ...data.recipes];
-  localStorage.setItem('products', JSON.stringify(allProducts));
-  european.innerHTML += data.recipes.map(cardComponent).join('');
-
-  initializeSliderButtons(european.parentElement);
-});
+      // wait for animation then hide completely
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 300); // must match duration-300
+  }
 
 }
 
